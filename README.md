@@ -31,7 +31,7 @@ All configuration is performed locally via a 20x4 LCD and 4x4 keypad, allowing u
 | **Power Transistor**| MOSFET IRFZ44N | Amplifies gate signal to drive the water pump. |
 | **Protection Diode**| 1N4007 | Flyback diode; suppresses reverse EMF at cutoff. |
 | **Soil Sensor** | Analog capacitive sensor | Reads live soil moisture (mapped 0-100%). |
-| **Resistors** | 10 kΩ / 2.2 kΩ | Voltage divider for battery voltage measurement. |
+| **Resistors** | 10 kΩ, 5kΩ, 1 kΩ | Voltage divider for battery voltage measurement and as a protector of full device. |
 | **Display** | 20x4 I2C LCD (0x27) | Shows menus, live readings, and system status. |
 | **Keypad** | 4x4 Matrix Keypad | User input for navigation and configuration. |
 | **Power Supply** | 7.4 V Li-ion pack | Portable rechargeable power supply. |
@@ -45,19 +45,19 @@ All configuration is performed locally via a 20x4 LCD and 4x4 keypad, allowing u
 
 ## ⚙️ Interactive Menu & Keypad Navigation
 The system is navigated using the following key mappings:
-* `[A]` - Enter Time-Based Monitoring Mode
-* `[B]` - Enter Moisture-Based Monitoring Mode
+* `[A]` - Enter Time-Based Monitoring Mode (When time => check moisture => do activity)
+* `[B]` - Enter Moisture-Based Monitoring Mode (when moisture low => pump on)
 * `[C]` - Set Scheduled Watering Time (Hour → Minute)
 * `[D]` - Set Target Soil Moisture Threshold (%)
 * `[0]` - Set Pump Run Duration (seconds)
-* `[*]` - View Live Battery Status
+* `[*]` - View Live Battery Status (On upgradation)
 * `[#]` - Return to Main Menu / Confirm / Exit current screen
 
 ## 🚀 Installation
 1. Clone the repository.
 2. Open `src/ShechBot.ino` in the Arduino IDE.
 3. Install required libraries: `Wire`, `LiquidCrystal_I2C`, `RTClib`, `Keypad`, and `EEPROM`.
-4. Compile and upload to the Arduino UNO.
+4. Compile and upload to the Arduino UNO with proper connection from `hardware/ShechBot_Circuit_Diagram.jpeg`.
 
 ## ⚠️ Known Limitations
 1. **Loose Wiring Connections:** Breadboard contacts may develop resistance under pump vibration, causing erratic readings. *Fix:* Solder all connections to a custom PCB and add strain relief.
