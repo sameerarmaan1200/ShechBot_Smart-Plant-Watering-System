@@ -1,4 +1,4 @@
-# ShechBot: Smart Automated Plant Watering System 🌿🤖
+## ShechBot: Smart Automated Plant Watering System 🌿🤖
 
 [![Arduino](https://img.shields.io/badge/-Arduino-00979D?style=for-the-badge&logo=Arduino&logoColor=white)](https://www.arduino.cc/)
 [![C++](https://img.shields.io/badge/-C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)](https://cplusplus.com/)
@@ -12,14 +12,14 @@
 </p>
 
 ## 📖 Overview
-ShechBot is an Arduino UNO-based smart automated plant watering system designed for precision irrigation. It operates as a fully standalone, battery-powered (7.4 V Li-ion) device without the need for cloud dependency. The system features a dual-mode control architecture governed by a finite-state machine (FSM) written in C++. 
+Meet **ShechBot**—our latest project designed to bring precision irrigation to places where Wi-Fi just doesn't reach. It’s a fully standalone, battery-powered system built on an microcontroller board that works entirely "off-grid."
 
-All configuration is performed locally via a 20x4 LCD and 4x4 keypad, allowing users to adjust settings in the field without requiring reprogramming. System parameters are persistently stored in the microcontroller's EEPROM using an XOR checksum validation scheme to survive power outages.
+The goal was to make something rugged and reliable. Instead of needing a laptop to change settings, we integrated a 20x4 LCD and a 4x4 keypad so users can tweak the watering schedule right there in the field.
 
 ## ✨ Key Features
 * ⏱️ **Time-Based Mode:** A DS3231 RTC triggers watering at a user-configured hour and minute (calibrated to Bangladesh Standard Time), checking soil moisture first to prevent unnecessary watering.
 * 💧 **Moisture-Based Mode:** Continuously polls an analog soil sensor and automatically activates the pump when moisture falls below a target threshold, featuring a 5-minute cooldown to prevent flooding.
-* 🔋 **Battery Monitoring:** A resistive voltage-divider circuit (10 kΩ / 2.2 kΩ) continuously maps the battery pack voltage to a 0-100% charge estimate displayed live on the LCD.
+* 🔋 **Battery Monitoring:** A resistive voltage-divider circuit (10 kΩ, 1 kΩ) continuously maps the battery pack voltage to a 0-100% charge estimate displayed live on the LCD.
 * 💾 **Reliability & Power Saving:** Features flyback protection, PWM ramp-up for the pump, and a 60-second LCD screen-saver to extend battery life during unattended operation.
 
 ## 🛠️ Hardware Architecture
@@ -31,11 +31,12 @@ All configuration is performed locally via a 20x4 LCD and 4x4 keypad, allowing u
 | **Power Transistor**| MOSFET IRFZ44N | Amplifies gate signal to drive the water pump. |
 | **Protection Diode**| 1N4007 | Flyback diode; suppresses reverse EMF at cutoff. |
 | **Soil Sensor** | Analog capacitive sensor | Reads live soil moisture (mapped 0-100%). |
-| **Resistors** | 10 kΩ, 5kΩ, 1 kΩ | Voltage divider for battery voltage measurement and as a protector of full device. |
+| **Resistors** | 10 kΩ, 5 kΩ, 1 kΩ | Voltage divider for battery voltage measurement and as a protector of full device. |
 | **Display** | 20x4 I2C LCD (0x27) | Shows menus, live readings, and system status. |
 | **Keypad** | 4x4 Matrix Keypad | User input for navigation and configuration. |
 | **Power Supply** | 7.4 V Li-ion pack | Portable rechargeable power supply. |
 | **Charger** | 2S Li-ion charger board | Safely recharges the battery in the field. |
+| **Pump** | 5v mini DC Submersible water pump| Making sure that the water flow is correct. |
 
 ## 🔌 Circuit & Wiring Reference
 
@@ -62,3 +63,5 @@ The system is navigated using the following key mappings:
 ## ⚠️ Known Limitations
 1. **Loose Wiring Connections:** Breadboard contacts may develop resistance under pump vibration, causing erratic readings. *Fix:* Solder all connections to a custom PCB and add strain relief.
 2. **RTC Coin-Cell Depletion:** The DS3231 CR2032 battery drains over months, leading to scheduling errors. *Fix:* Monitor VBAT pin and display a low-battery warning on the LCD.
+
+<h3> Note :</h3>It is a prototype.
