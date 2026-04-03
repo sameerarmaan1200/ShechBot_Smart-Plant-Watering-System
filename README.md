@@ -65,3 +65,6 @@ The system is navigated using the following key mappings:
 2. **RTC Coin-Cell Depletion:** The DS3231 CR2032 battery drains over months, leading to scheduling errors. *Fix:* Monitor VBAT pin and display a low-battery warning on the LCD.
 
 <h3> Note :</h3>It is a prototype.
+
+
+<!-- done!-->
